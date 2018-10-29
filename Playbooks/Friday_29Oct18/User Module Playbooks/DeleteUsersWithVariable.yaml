@@ -1,0 +1,33 @@
+
+---
+# this is playbook where we use the variables to create users to a remote host or hosts
+
+ - hosts: webservers
+   sudo: yes
+   remote_user: root
+
+   tasks:
+   - name: Creating users to a remote webserver in webservers host using playbook variables
+     user:
+       name: "{{ item }}"
+       state: absent
+
+     with_items:
+       - KhurramA
+       - KhurramB
+       - khurramC
+
+
+ - hosts: dbservers
+   sudo: yes
+
+   tasks:
+   - name: Creating users to a remote dbserver in dbservers hosts using playbook variable
+     user:
+       name: "{{ item }}"
+       state: absent
+
+     with_items:
+       - hashmiDB1
+       - hashDb2
+       - hashmiDb3

@@ -1,0 +1,17 @@
+
+---
+# this is a playbook for the creation of users in remote hosts
+
+- hosts: webservers
+  sudo: yes
+
+  tasks:
+  - name: Creating users in Webservers
+    user: name=KhurramUser1WithComment password=0909 comment="this is a web user"
+
+- hosts: dbservers
+  sudo: yes
+
+  tasks:
+  - name: Creating users in db servers
+    user: name=KhurramDBUser password=0808HashPass564 comment="this is db user"
