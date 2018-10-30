@@ -1,0 +1,7 @@
+---
+# this a variable file for create users
+
+users:
+ - User1
+ - User2
+ - User3

@@ -1,0 +1,17 @@
+
+
+# Installing Packages with one Task ( Faster Process )
+
+- hosts: webservers
+  sudo: yes
+  remote_user: root
+  
+  tasks:
+   - name: Installing Packages
+     apt:
+       name: "{{ item }}"
+       update_cache: yes
+     with_items:
+        - httpd
+        - nginx
+        - mysql-server

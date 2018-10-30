@@ -1,0 +1,38 @@
+
+---
+# this is a playbook for the multiple user creation
+
+# users:
+#  - User1
+#  - User2
+#   - User3 
+
+ - hosts: webservers
+   remote_user: root
+
+   tasks:
+    - name: Creating users from users list using include_vars in webservers
+      include_vars:
+        file: webusersList.yaml
+      user:
+        name: '{{ users }}'
+        state: present
+     
+      
+
+
+# dbusers:
+#  - username: dbuser1
+#  - username: dbuser2
+#  - username: dbusser3
+#  - username: dbuser4
+
+
+#- hosts: dbservers
+#  sudo: yes
+
+#  tasks:
+#  - include_vars: dbusers.yaml
+#  - name: Creating users from user list using include_vars in db servers
+#  - user: name= "{{item.username}}" comment=users created in db servers from ansible
+#  - with_items:  "{{dbusers}}"

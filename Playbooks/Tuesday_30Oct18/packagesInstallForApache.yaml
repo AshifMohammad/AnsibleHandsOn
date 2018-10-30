@@ -1,0 +1,13 @@
+
+- hosts: webservers
+  sudo: yes
+  remote_user: root
+  
+  tasks:
+  	- name: ensure a list of packages installed
+      yum:
+         name: "{{ packages }}"
+      vars:
+         packages:
+           - httpd
+           - httpd-tools

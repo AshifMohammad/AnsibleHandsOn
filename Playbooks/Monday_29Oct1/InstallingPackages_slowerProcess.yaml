@@ -1,0 +1,19 @@
+# Installing packages individually ( Slower Process )
+
+- hosts: webservers
+  sudo: yes
+  remote_user: root
+  
+  tasks:
+   - name: Installing apache server
+     yum:
+       name: httpd
+       update_cache: yes
+   - name: Installing nginx
+     yum:
+       name: nginx
+       update_cache: yes
+   - name: Installing mysql-server
+     yum:
+       name: mysql-server
+       update_cache: yes
