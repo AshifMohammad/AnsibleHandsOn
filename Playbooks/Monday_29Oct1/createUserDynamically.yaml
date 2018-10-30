@@ -1,0 +1,16 @@
+---
+# this is the user prompt playbook to create the user on demand
+
+ - hosts: webservers
+   sudo: yes
+
+   vars_prompt:
+    - name: "username"
+      prompt: "What user you want to create on the Webservers"
+
+   tasks:
+    - name: Ansible will ask admin to create user dynamically
+      user:
+        name: "{{ username }}"
+        password: 12345
+        comment: "This user is created dynamically"
