@@ -1,0 +1,13 @@
+
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - debug:
+        var: username
+    - name: creating users adhac command
+      user:
+        name: username
+        comment: "this user is created by adhoc comment"
+#ansible-playbook inserVarAdHocCmd.yaml -i inventory -k

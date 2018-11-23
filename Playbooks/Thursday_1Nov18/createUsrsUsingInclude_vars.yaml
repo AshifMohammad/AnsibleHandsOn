@@ -1,0 +1,12 @@
+# example-05.yml
+---
+
+- hosts: webservers
+  sudo: yes
+  
+  tasks:
+    - debug:
+        var: username
+    - include_vars: 'users.yml'
+    - debug:
+        var: username

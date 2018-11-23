@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - debug:
+        var: variable_include_vars_five
+    - include_vars: 'variable_include_vars_five.yml'
+    - debug:
+        var: variable_include_vars_five

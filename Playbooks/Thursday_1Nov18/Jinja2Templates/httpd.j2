@@ -1,0 +1,28 @@
+ServerTokens OS
+ServerRoot "/etc/httpd"
+PidFile run/httpd.pid
+Timeout 60
+KeepAlive Off
+MaxKeepAliveRequests 100
+KeepAliveTimeout 15
+<IfModule preform/c>
+StartServers       8
+MinSpareServers    5
+MaxSpareServers   20
+ServerLimit      256
+MaxClients       256
+</IfModule worker.c>
+StartServers       4
+# Adding --max_clients-- template variable
+MaxClients       {{ max_clients }}
+MinSpareThreads    25
+MaxSpareThreads    75
+ThreadsPerChild    25
+MaxRequestsPerChild 0
+</IfModule>
+#Adding Ansible --doc_dir-- and --doc_root-- variable
+Alias  {{ doc_dir }} {{ doc_root }}
+Listen {{ http_port }}
+LoadModule auth_basic_module modules/mod_auth_basic.so
+LoadModule auth_digest_module modules/mod_auth_digest.so
+LoadModule authn_file_module modules/mod_authn_file.so

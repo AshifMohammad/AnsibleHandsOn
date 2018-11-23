@@ -1,0 +1,4 @@
+# variable_include_vars_five.yml
+---
+
+variable_include_vars_five: 'set-via-include-vars-file'

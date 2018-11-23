@@ -1,0 +1,8 @@
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - debug:
+        var: variable_one
+#ansible-playbook inserVarAdHocCmd.yaml -i inventory -k

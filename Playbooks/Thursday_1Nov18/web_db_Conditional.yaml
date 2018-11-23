@@ -1,0 +1,32 @@
+---
+- hosts: webservers
+  sudo: yes
+
+  tasks:
+  - name: Ensure that Apache is installed
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Start Apache Services
+    service: name=httpd enabled=yes state=started
+
+
+- hosts: dbservers
+  sudo: yes
+
+
+  tasks:
+  - name: Ensure mysql is installed
+    yum: name=mysql-server state=present
+    when: ansible_os_family == "RedHat"
+    
+  - name: Start mysql server
+    service: name=mysqld state=started
+
+- hosts: webservers:dbservers
+  sudo: yes
+
+
+  tasks:
+  - name: stop iptables now!!!
+    service: name=iptables state=stopped
